@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PodcastCliApplication {
 
     public static void main(String[] args) {
+
+        System.setProperty("spring.main.web-application-type", "none");
         SpringApplication.run(PodcastCliApplication.class, args);
     }
 

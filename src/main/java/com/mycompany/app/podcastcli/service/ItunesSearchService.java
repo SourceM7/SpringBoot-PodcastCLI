@@ -33,7 +33,7 @@ public class ItunesSearchService {
     public ItunesSearchResponse search(String query) {
         WebClient webClient = WebClient.create(URL);
 
-        return this.webClient.get()
+        ItunesSearchResponse response=  this.webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/search")
                         .queryParam("term", query)
@@ -44,5 +44,11 @@ public class ItunesSearchService {
                 .retrieve()
                 .bodyToMono(ItunesSearchResponse.class)
                 .block();
+
+//        response.getResults().forEach(result -> {
+//            new FeedSaxParser().parseFeed(result.getFeedUrl());
+//        });
+
+        return response;
     }
 }
