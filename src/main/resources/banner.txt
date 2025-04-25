@@ -1,7 +1,11 @@
-${AnsiColor.BRIGHT_YELLOW}                   ██████╗ █████╗ ███████╗████████╗    ██████╗██╗     ██╗
-${AnsiColor.BRIGHT_YELLOW}                  ██╔════╝██╔══██╗██╔════╝╚══██╔══╝   ██╔════╝██║     ██║
-${AnsiColor.BRIGHT_YELLOW}                  ██║     ███████║███████╗   ██║█████╗██║     ██║     ██║
-${AnsiColor.BRIGHT_YELLOW}                  ██║     ██╔══██║╚════██║   ██║╚════╝██║     ██║     ██║
-${AnsiColor.BRIGHT_YELLOW}                  ╚██████╗██║  ██║███████║   ██║      ╚██████╗███████╗██║
-${AnsiColor.BRIGHT_YELLOW}                   ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝       ╚═════╝╚══════╝╚═╝
-${AnsiColor.WHITE}                          Your podcast player in your CLI
+${AnsiColor.YELLOW}┌────────────────────────────────────────────────────────────────────────────────────────┐${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│                                                                                        │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│    ██████╗  ██████╗ ██████╗  ██████╗ █████╗ ███████╗████████╗    ██████╗██╗     ██╗    │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│    ██╔══██╗██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝╚══██╔══╝   ██╔════╝██║     ██║    │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│    ██████╔╝██║   ██║██║  ██║██║     ███████║███████╗   ██║█████╗██║     ██║     ██║    │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│    ██╔═══╝ ██║   ██║██║  ██║██║     ██╔══██║╚════██║   ██║╚════╝██║     ██║     ██║    │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│    ██║     ╚██████╔╝██████╔╝╚██████╗██║  ██║███████║   ██║      ╚██████╗███████╗██║    │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│    ╚═╝      ╚═════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝       ╚═════╝╚══════╝╚═╝    │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}│                                                                                        │${AnsiColor.DEFAULT}
+${AnsiColor.YELLOW}└────────────────────────────────────────────────────────────────────────────────────────┘${AnsiColor.DEFAULT}
+${AnsiColor.CYAN}                                   github.com/SourceM7${AnsiColor.DEFAULT}

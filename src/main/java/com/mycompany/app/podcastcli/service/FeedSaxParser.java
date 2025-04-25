@@ -7,10 +7,38 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FeedSaxParser {
 
-    public void parseFeed(String feedUrl) {
+    public static class Episode {
+        private String title;
+        private String description;
+        private String audioUrl;
+
+        public Episode(String title, String description, String audioUrl) {
+            this.title = title;
+            this.description = description;
+            this.audioUrl = audioUrl;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public String getAudioUrl() {
+            return audioUrl;
+        }
+    }
+
+    public List<Episode> parseFeed(String feedUrl) {
+        List<Episode> episodes = new ArrayList<>();
+
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
@@ -47,13 +75,13 @@ public class FeedSaxParser {
                 @Override
                 public void endElement(String uri, String localName, String qName) {
                     if ("item".equalsIgnoreCase(qName)) {
-                        System.out.println("Title: " + title.toString().trim());
-                        System.out.println("Description: " + description.toString().trim());
-                        System.out.println("Enclosure URL: " + enclosureUrl);
-                        System.out.println("------");
+                        String titleStr = title.toString().trim();
+                        String descriptionStr = description.toString().trim();
+
+                        episodes.add(new Episode(titleStr, descriptionStr, enclosureUrl));
 
                         itemCount++;
-                        if (itemCount >= 3) throw new RuntimeException("Done after 3 items");
+                        if (itemCount >= 10) throw new RuntimeException("Done after 10 items");
 
                         title.setLength(0);
                         description.setLength(0);
@@ -68,9 +96,11 @@ public class FeedSaxParser {
 
             parser.parse(new URL(feedUrl).openStream(), handler);
         } catch (RuntimeException doneSignal) {
-
+            // Expected exception for limiting items
         } catch (Exception e) {
             System.out.println("Parsing error: " + e.getMessage());
         }
+
+        return episodes;
     }
 }
