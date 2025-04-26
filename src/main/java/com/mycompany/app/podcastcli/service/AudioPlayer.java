@@ -112,21 +112,17 @@ public class AudioPlayer {
             inputListenerThread.interrupt();
         }
         inputListenerThread = new Thread(() -> {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            try {
                 while (isPlaying.get() && !Thread.currentThread().isInterrupted()) {
-                    synchronized (consoleLock) {
-                        System.out.print("> ");
-                    }
+
                     if (reader.ready()) {
                         String lineInput = reader.readLine();
-                        synchronized (consoleLock) {
-                            System.out.print("\r");
-                        }
                         if (lineInput != null && lineInput.trim().equalsIgnoreCase("q")) {
                             stop();
-                            break;
                         }
                     }
+
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
@@ -135,9 +131,13 @@ public class AudioPlayer {
                     }
                 }
             } catch (IOException e) {
-                if (isPlaying.get()) {
-                    System.err.println(ANSI_RED + "Error reading console input: " + e.getMessage() + ANSI_RESET);
+                if (!Thread.currentThread().isInterrupted() && isPlaying.get()) {
+                    synchronized (consoleLock) {
+                        System.err.println(ANSI_RED + "\nError reading console input: " + e.getMessage() + ANSI_RESET);
+                    }
                 }
+            } finally {
+                // Intentionally DO NOT close the reader here
             }
         });
         inputListenerThread.setName("AudioInputListenerThread");
